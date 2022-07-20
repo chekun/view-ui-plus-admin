@@ -48,8 +48,8 @@ import { getNewTagList, getNextRoute, routeEqual } from '@/libs/util'
 import appConfig from '@/config'
 import appLang from '@/locale'
 
-import minLogo from '@/assets/logo-min.jpg'
-import maxLogo from '@/assets/logo.jpg'
+import minLogo from '@/assets/logo-min.png'
+import maxLogo from '@/assets/logo.png'
 
 import './main.less'
 export default {
