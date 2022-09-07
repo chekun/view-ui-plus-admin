@@ -33,9 +33,7 @@ class HttpRequest {
   destroy (url) {
     delete this.queue[url]
     if (!Object.keys(this.queue).length) {
-      try {
-        loader.hide()
-      } catch (e) {}
+      ViewUIPlus.Spin.hide()
     }
   }
   interceptors (instance, url) {
@@ -44,15 +42,7 @@ class HttpRequest {
       // 添加全局的loading...
       if (!Object.keys(this.queue).length) {
         if (config.method !== 'get') {
-          loader.show({
-            isFullPage: true,
-            canCancel: false,
-            loader: 'spinner',
-            zIndex: 10000,
-            color: '#007bff',
-            width: 32,
-            height: 32
-          })
+          ViewUIPlus.Spin.show()
         }
       }
       this.queue[url] = true
