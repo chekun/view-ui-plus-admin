@@ -7,7 +7,7 @@ import path from 'path'
 const config = ({ mode }) => {
   const isProd = mode === 'production'
   const envPrefix = 'APP_'
-  const { APP_TITLE = '' } = loadEnv(mode, process.cwd(), envPrefix)
+  const { APP_TITLE = '', APP_DEV_SERVER = '' } = loadEnv(mode, process.cwd(), envPrefix)
   return {
     plugins: [
       vue(),
@@ -59,10 +59,10 @@ const config = ({ mode }) => {
       }
     },
     server: {
-      open: true,
+      open: APP_DEV_SERVER !== '',
       proxy: {
         '/api': {
-          target: 'http://localhost:18100',
+          target: APP_DEV_SERVER,
           rewrite: path => path.replace(/^\/api/, ''),
           secure: false,
           changeOrigin: true
